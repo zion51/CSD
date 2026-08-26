@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CommunityServiceDashboard">
+        <activity
+            android:name=".ApproveTutorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ApproveHealthcareActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ApproveBusinessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminControlPanelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EducationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JobsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BusinessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManageBusinessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllDoctorsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgricultureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpazilaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManageDoctorSerialsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HealthcareDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SerialManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DiagnosticManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DoctorManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ServiceManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HealthcareActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManageHealthcareActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TransportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmergencyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BloodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlertsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ServicesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

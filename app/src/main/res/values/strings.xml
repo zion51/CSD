@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Community Service Dashboard</string>
+    <string name="welcome">Welcome,</string>
+    <string name="how_can_we_help">How can we help today?</string>
+    <string name="health_care">Health Care</string>
+    <string name="birth_death">Birth \u0026 Death</string>
+    <string name="doctor">Doctor</string>
+    <string name="ambulance">Ambulance</string>
+    <string name="transports">Transports</string>
+    <string name="blood">Blood</string>
+    <string name="agriculture">Agriculture</string>
+    <string name="emergency">Emergency</string>
+    <string name="admin">Upazila Information</string>
+    <string name="business">Business</string>
+    <string name="education">Education</string>
+    <string name="jobs">Jobs</string>
+    <string name="home">Home</string>
+    <string name="services">Services</string>
+    <string name="alerts">Alerts</string>
+    <string name="profile">Profile</string>
+
+    <!-- Profile Labels -->
+    <string name="phone_label">Phone: %1$s</string>
+    <string name="blood_group_label">Blood Group: %1$s</string>
+    <string name="account_details">Account Details</string>
+    <string name="blood_donor_settings">Blood Donor Settings</string>
+    <string name="available_as_donor">Available as Blood Donor</string>
+    <string name="last_donation_date">Last Blood Donation Date</string>
+    <string name="update_donation_date">Update Donation Date</string>
+    <string name="donor_requirements_title">Donor Requirements</string>
+    <string name="donor_requirements_message">Some essential conditions before donating blood:\n\n• Age: Usually 18 to 60 years.\n• Weight: Must be at least 45-50 kg.\n• Hemoglobin: The hemoglobin level in the blood must be correct (usually above 12.5).\n• Health: There should be no fever, cold, or any contagious disease at the time of donating blood.</string>
+    <string name="i_agree">I Agree</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Transport Registration -->
+    <string name="register_transport">Register Transport</string>
+    <string name="vehicle_type">Vehicle Type</string>
+    <string name="vehicle_number">Vehicle Number</string>
+    <string name="driver_name">Driver Name</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="submit">Submit</string>
+    <string name="transport_registration_success">Transport registration submitted successfully</string>
+</resources>

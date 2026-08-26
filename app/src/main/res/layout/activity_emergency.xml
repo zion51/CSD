@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".EmergencyActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/surface"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:title="Emergency Contacts"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- National Emergency 999 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card999"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#B3261E"
+                app:cardCornerRadius="16dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🚨"
+                        android:textSize="40sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="National Emergency"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="999 (Police, Fire, Amb)"
+                            android:textColor="@color/white"
+                            android:alpha="0.9" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCall999"
+                        style="@style/Widget.Material3.Button.IconButton.Filled"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:backgroundTint="@color/white"
+                        app:icon="@android:drawable/ic_menu_call"
+                        app:iconTint="#B3261E" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Department Hotlines"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="4dp"/>
+
+            <!-- Fire Service -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardFire"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="12dp" android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔥" android:textSize="24sp" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fire Service" android:textStyle="bold" android:textSize="16sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="102" android:textColor="@color/primary" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnCallFire" style="@style/Widget.Material3.Button.IconButton.Filled.Tonal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:icon="@android:drawable/ic_menu_call" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Ambulance -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAmbulance"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="12dp" android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🚑" android:textSize="24sp" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ambulance (Govt)" android:textStyle="bold" android:textSize="16sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="16263" android:textColor="@color/primary" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnCallAmb" style="@style/Widget.Material3.Button.IconButton.Filled.Tonal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:icon="@android:drawable/ic_menu_call" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Women and Child -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardWomen"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="12dp" android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👩" android:textSize="24sp" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Women &amp; Child Help" android:textStyle="bold" android:textSize="16sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="109" android:textColor="@color/primary" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnCallWomen" style="@style/Widget.Material3.Button.IconButton.Filled.Tonal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:icon="@android:drawable/ic_menu_call" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Govt Info -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardGovt"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="12dp" android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ℹ️" android:textSize="24sp" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Govt Information" android:textStyle="bold" android:textSize="16sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="333" android:textColor="@color/primary" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnCallGovt" style="@style/Widget.Material3.Button.IconButton.Filled.Tonal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:icon="@android:drawable/ic_menu_call" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other Services"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="4dp"/>
+
+            <!-- RAB -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRAB"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="12dp" android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👮" android:textSize="24sp" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="RAB (Crime/Militant)" android:textStyle="bold" android:textSize="16sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="01777711099" android:textColor="@color/primary" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnCallRAB" style="@style/Widget.Material3.Button.IconButton.Filled.Tonal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:icon="@android:drawable/ic_menu_call" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Titas Gas -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardGas"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="12dp" android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⛽" android:textSize="24sp" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Titas Gas Leakage" android:textStyle="bold" android:textSize="16sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="16496" android:textColor="@color/primary" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnCallGas" style="@style/Widget.Material3.Button.IconButton.Filled.Tonal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:icon="@android:drawable/ic_menu_call" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Electricity -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardElectricity"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="12dp" android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚡" android:textSize="24sp" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Electricity (DESCO)" android:textStyle="bold" android:textSize="16sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="16120" android:textColor="@color/primary" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnCallElectricity" style="@style/Widget.Material3.Button.IconButton.Filled.Tonal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:icon="@android:drawable/ic_menu_call" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ACC -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardACC"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                app:cardCornerRadius="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="12dp" android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🚫" android:textSize="24sp" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Anti-Corruption (ACC)" android:textStyle="bold" android:textSize="16sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="106" android:textColor="@color/primary" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnCallACC" style="@style/Widget.Material3.Button.IconButton.Filled.Tonal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:icon="@android:drawable/ic_menu_call" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

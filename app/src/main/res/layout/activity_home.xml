@@ -82,9 +82,10 @@
                         android:gravity="center"
                         android:orientation="vertical">
                         <TextView
+                            android:id="@+id/tvDonorCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="500+"
+                            android:text="0"
                             android:textStyle="bold"
                             android:textColor="@color/onPrimaryContainer"/>
                         <TextView
@@ -109,9 +110,10 @@
                         android:gravity="center"
                         android:orientation="vertical">
                         <TextView
+                            android:id="@+id/tvDoctorCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="50+"
+                            android:text="0"
                             android:textStyle="bold"
                             android:textColor="@color/onPrimaryContainer"/>
                         <TextView
@@ -136,9 +138,10 @@
                         android:gravity="center"
                         android:orientation="vertical">
                         <TextView
+                            android:id="@+id/tvTransportCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="20+"
+                            android:text="0"
                             android:textStyle="bold"
                             android:textColor="@color/onPrimaryContainer"/>
                         <TextView
@@ -199,7 +202,7 @@
                         android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="6dp"
-                        app:cardBackgroundColor="@color/surface"
+                        app:cardBackgroundColor="@color/secondaryContainer"
                         app:cardCornerRadius="16dp">
 
                         <LinearLayout
@@ -221,7 +224,7 @@
                                 android:layout_marginTop="8dp"
                                 android:text="@string/blood"
                                 android:textAlignment="center"
-                                android:textColor="@color/onSurface"
+                                android:textColor="@color/onPrimaryContainer"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
@@ -231,7 +234,7 @@
                         android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="6dp"
-                        app:cardBackgroundColor="@color/surface"
+                        app:cardBackgroundColor="@color/secondaryContainer"
                         app:cardCornerRadius="16dp">
 
                         <LinearLayout
@@ -253,7 +256,7 @@
                                 android:layout_marginTop="8dp"
                                 android:text="@string/emergency"
                                 android:textAlignment="center"
-                                android:textColor="@color/onSurface"
+                                android:textColor="@color/onPrimaryContainer"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
@@ -263,7 +266,7 @@
                         android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="6dp"
-                        app:cardBackgroundColor="@color/surface"
+                        app:cardBackgroundColor="@color/secondaryContainer"
                         app:cardCornerRadius="16dp">
 
                         <LinearLayout
@@ -285,7 +288,7 @@
                                 android:layout_marginTop="8dp"
                                 android:text="@string/transports"
                                 android:textAlignment="center"
-                                android:textColor="@color/onSurface"
+                                android:textColor="@color/onPrimaryContainer"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
@@ -295,7 +298,7 @@
                         android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="6dp"
-                        app:cardBackgroundColor="@color/surface"
+                        app:cardBackgroundColor="@color/secondaryContainer"
                         app:cardCornerRadius="16dp">
 
                         <LinearLayout
@@ -317,7 +320,7 @@
                                 android:layout_marginTop="8dp"
                                 android:text="@string/health_care"
                                 android:textAlignment="center"
-                                android:textColor="@color/onSurface"
+                                android:textColor="@color/onPrimaryContainer"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
@@ -348,7 +351,7 @@
                     android:layout_gravity="fill"
                     android:layout_margin="4dp"
                     app:cardCornerRadius="12dp"
-                    app:cardBackgroundColor="@color/surface">
+                    app:cardBackgroundColor="@color/secondaryContainer">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:padding="16dp" android:orientation="horizontal">
                         <TextView
                             android:layout_width="wrap_content"
@@ -360,6 +363,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Birth &amp; Death Registration"
+                            android:textColor="@color/onPrimaryContainer"
                             android:textStyle="bold"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -372,7 +376,7 @@
                     android:layout_gravity="fill"
                     android:layout_margin="4dp"
                     app:cardCornerRadius="12dp"
-                    app:cardBackgroundColor="@color/surface">
+                    app:cardBackgroundColor="@color/secondaryContainer">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:padding="16dp" android:orientation="horizontal">
                         <TextView
                             android:layout_width="wrap_content"
@@ -384,6 +388,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Find Jobs"
+                            android:textColor="@color/onPrimaryContainer"
                             android:textStyle="bold"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>

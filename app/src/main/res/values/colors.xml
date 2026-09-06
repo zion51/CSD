@@ -3,32 +3,32 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Modern Color Palette -->
-    <color name="primary">#6750A4</color>
+    <!-- Nature Green Color Palette (Material 3) -->
+    <color name="primary">#006D3A</color>
     <color name="onPrimary">#FFFFFF</color>
-    <color name="primaryContainer">#EADDFF</color>
-    <color name="onPrimaryContainer">#21005D</color>
+    <color name="primaryContainer">#98F7B5</color>
+    <color name="onPrimaryContainer">#00210E</color>
 
-    <color name="secondary">#625B71</color>
+    <color name="secondary">#4F6354</color>
     <color name="onSecondary">#FFFFFF</color>
-    <color name="secondaryContainer">#E8DEF8</color>
-    <color name="onSecondaryContainer">#1D192B</color>
+    <color name="secondaryContainer">#D2E8D5</color>
+    <color name="onSecondaryContainer">#0C1F13</color>
 
-    <color name="tertiary">#7D5260</color>
+    <color name="tertiary">#3B6470</color>
     <color name="onTertiary">#FFFFFF</color>
-    <color name="tertiaryContainer">#FFD8E4</color>
-    <color name="onTertiaryContainer">#31111D</color>
+    <color name="tertiaryContainer">#BFEAF7</color>
+    <color name="onTertiaryContainer">#001F27</color>
 
-    <color name="error">#B3261E</color>
+    <color name="error">#BA1A1A</color>
     <color name="onError">#FFFFFF</color>
-    <color name="errorContainer">#F9DEDC</color>
-    <color name="onErrorContainer">#410E0B</color>
+    <color name="errorContainer">#FFDAD6</color>
+    <color name="onErrorContainer">#410002</color>
 
-    <color name="background">#FEF7FF</color>
-    <color name="onBackground">#1D1B20</color>
-    <color name="surface">#FEF7FF</color>
-    <color name="onSurface">#1D1B20</color>
-    <color name="surfaceVariant">#E7E0EB</color>
-    <color name="onSurfaceVariant">#49454F</color>
-    <color name="outline">#79747E</color>
+    <color name="background">#FBFDF8</color>
+    <color name="onBackground">#191C19</color>
+    <color name="surface">#FBFDF8</color>
+    <color name="onSurface">#191C19</color>
+    <color name="surfaceVariant">#DCE5DB</color>
+    <color name="onSurfaceVariant">#414942</color>
+    <color name="outline">#727971</color>
 </resources>

@@ -33,11 +33,12 @@ import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
 
-    TextView tvWelcome, seemore;
+    TextView tvWelcome, seemore, tvDonorCount, tvDoctorCount, tvTransportCount;
     SharedPreferences sharedPreferences;
     RelativeLayout loadingLayout;
 
     private static final String URL_GET_USER = "https://csd.theeztech.xyz/api/get_user.php";
+    private static final String URL_GET_STATS = "https://csd.theeztech.xyz/api/get_stats.php";
     private static final String KEY_CACHED_NAME = "cached_name";
     ViewPager2 imageSlider;
     Handler sliderHandler = new Handler(Looper.getMainLooper());
@@ -53,6 +54,10 @@ public class HomeActivity extends AppCompatActivity {
 
         tvWelcome = findViewById(R.id.tvWelcome);
         loadingLayout = findViewById(R.id.loadingLayout);
+        tvDonorCount = findViewById(R.id.tvDonorCount);
+        tvDoctorCount = findViewById(R.id.tvDoctorCount);
+        tvTransportCount = findViewById(R.id.tvTransportCount);
+
         sharedPreferences = getSharedPreferences(MainActivity.SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
         // Retrieve the user's name from SharedPreferences
@@ -65,6 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         if(phone != null){
             fetchUserName(phone);
         }
+        fetchDashboardStats();
 
         imageSlider = findViewById(R.id.imageSlider);
 
@@ -216,6 +222,32 @@ public class HomeActivity extends AppCompatActivity {
                 return params;
             }
         };
+
+        VolleySingleton.getInstance(this).addToRequestQueue(request);
+    }
+
+    private void fetchDashboardStats() {
+        StringRequest request = new StringRequest(Request.Method.GET, URL_GET_STATS,
+                response -> {
+                    try {
+                        JSONObject obj = new JSONObject(response);
+                        // Changed status check to "success" boolean/string handling based on PHP output
+                        if (obj.optBoolean("success") || obj.optString("success").equals("true")) {
+                            tvDonorCount.setText(obj.optString("donors", "0") + "+");
+                            tvDoctorCount.setText(obj.optString("doctors", "0") + "+");
+                            tvTransportCount.setText(obj.optString("transports", "0") + "+");
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                },
+                error -> {
+                    // Fallback to static values if API fails
+                    tvDonorCount.setText("500+");
+                    tvDoctorCount.setText("50+");
+                    tvTransportCount.setText("20+");
+                }
+        );
 
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }

@@ -34,6 +34,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -119,6 +120,14 @@ public class ManageBusinessActivity extends AppCompatActivity implements JobAdap
                             jobList.clear();
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject obj = array.getJSONObject(i);
+                                String deadline = obj.optString("deadline");
+                                
+                                // Auto delete expired jobs from view
+                                if (isExpired(deadline)) {
+                                    autoDeleteJob(obj.optString("id"));
+                                    continue;
+                                }
+
                                 jobList.add(new Job(
                                         obj.optString("id"),
                                         obj.optString("job_title"),
@@ -129,7 +138,7 @@ public class ManageBusinessActivity extends AppCompatActivity implements JobAdap
                                         obj.optString("workplace"),
                                         obj.optString("education"),
                                         obj.optString("experience"),
-                                        obj.optString("deadline"),
+                                        deadline,
                                         obj.optString("description"),
                                         obj.optString("user_phone", userPhone)
                                 ));
@@ -302,6 +311,45 @@ public class ManageBusinessActivity extends AppCompatActivity implements JobAdap
             }
         };
 
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
+    private boolean isExpired(String deadlineStr) {
+        if (deadlineStr == null || deadlineStr.isEmpty()) return false;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+            Date deadlineDate = sdf.parse(deadlineStr);
+            if (deadlineDate == null) return false;
+
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY, 0);
+            cal.set(Calendar.MINUTE, 0);
+            cal.set(Calendar.SECOND, 0);
+            cal.set(Calendar.MILLISECOND, 0);
+            Date today = cal.getTime();
+
+            return today.after(deadlineDate);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private void autoDeleteJob(String jobId) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DELETE_JOB,
+                response -> {
+                    // Silent delete
+                },
+                error -> {
+                    // Silent fail
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("job_id", jobId);
+                params.put("user_phone", userPhone);
+                return params;
+            }
+        };
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 }

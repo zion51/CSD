@@ -105,7 +105,9 @@ public class SerialManagementActivity extends AppCompatActivity implements Docto
                                         obj.getString("qualification"),
                                         obj.getString("phone"),
                                         obj.getString("visit_fee"),
-                                        obj.getString("chamber_time")
+                                        obj.getString("chamber_time"),
+                                        obj.optString("chamber_day", ""),
+                                        null
                                 ));
                             }
                             fetchSerialsAndCount(healthcareId);

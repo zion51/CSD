@@ -63,8 +63,17 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
         holder.tvSpecialty.setText(doctor.getSpecialization());
         holder.tvQualification.setText(doctor.getQualification());
         holder.tvHours.setText("Time: " + doctor.getChamberTime());
+        holder.tvDays.setText("Days: " + doctor.getChamberDay());
         holder.tvFee.setText("Fee: " + doctor.getVisitFee());
         holder.tvPhone.setText("Phone: " + doctor.getPhone());
+
+        String hcName = doctor.getHealthcareName();
+        if (hcName != null && !hcName.isEmpty() && !hcName.equals("null")) {
+            holder.tvHealthcareName.setVisibility(View.VISIBLE);
+            holder.tvHealthcareName.setText("At: " + hcName);
+        } else {
+            holder.tvHealthcareName.setVisibility(View.GONE);
+        }
 
         if (showPendingCount) {
             holder.tvPendingCount.setVisibility(View.VISIBLE);
@@ -109,7 +118,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvSpecialty, tvQualification, tvHours, tvFee, tvPhone, tvPendingCount;
+        TextView tvName, tvSpecialty, tvHealthcareName, tvQualification, tvHours, tvDays, tvFee, tvPhone, tvPendingCount;
         ImageButton btnEdit, btnDelete;
         View btnBookSerial;
 
@@ -117,8 +126,10 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
             super(itemView);
             tvName = itemView.findViewById(R.id.tvDoctorName);
             tvSpecialty = itemView.findViewById(R.id.tvSpecialty);
+            tvHealthcareName = itemView.findViewById(R.id.tvHealthcareName);
             tvQualification = itemView.findViewById(R.id.tvQualification);
             tvHours = itemView.findViewById(R.id.tvVisitingHours);
+            tvDays = itemView.findViewById(R.id.tvVisitingDays);
             tvFee = itemView.findViewById(R.id.tvFee);
             tvPhone = itemView.findViewById(R.id.tvDoctorPhone);
             tvPendingCount = itemView.findViewById(R.id.tvPendingCount);

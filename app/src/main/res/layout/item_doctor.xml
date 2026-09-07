@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/primaryContainer"
+    app:cardBackgroundColor="@color/surfaceVariant"
     app:cardCornerRadius="12dp"
     app:cardElevation="2dp"
     app:strokeWidth="0dp">
@@ -45,7 +45,7 @@
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="2dp"
                     android:text="0 Pending"
-                    android:textColor="@color/white"
+                    android:textColor="@color/secondaryContainer"
                     android:textSize="10sp"
                     android:visibility="gone" />
             </LinearLayout>
@@ -58,6 +58,17 @@
                 android:text="Specialty"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                 android:textColor="@color/primary" />
+
+            <TextView
+                android:id="@+id/tvHealthcareName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Healthcare Center"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="@color/secondary"
+                android:textStyle="italic"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tvQualification"
@@ -75,6 +86,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Hours: 10AM - 2PM"
+                android:textColor="@color/onPrimaryContainer"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
+
+            <TextView
+                android:id="@+id/tvVisitingDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Days: Sat - Thu"
                 android:textColor="@color/onPrimaryContainer"
                 android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
 

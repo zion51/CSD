@@ -23,8 +23,12 @@ import com.google.android.material.progressindicator.LinearProgressIndicator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class JobsActivity extends AppCompatActivity {
 
@@ -118,20 +122,24 @@ public class JobsActivity extends AppCompatActivity {
                         if (array != null) {
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject obj = array.getJSONObject(i);
-                                jobList.add(new Job(
-                                        obj.optString("id"),
-                                        obj.optString("job_title"),
-                                        obj.optString("job_category"),
-                                        obj.optString("job_type"),
-                                        obj.optString("vacancies"),
-                                        obj.optString("salary"),
-                                        obj.optString("workplace"),
-                                        obj.optString("education"),
-                                        obj.optString("experience"),
-                                        obj.optString("deadline"),
-                                        obj.optString("description"),
-                                        obj.optString("owner_phone", obj.optString("user_phone", ""))
-                                ));
+                                String deadline = obj.optString("deadline");
+                                
+                                if (!isExpired(deadline)) {
+                                    jobList.add(new Job(
+                                            obj.optString("id"),
+                                            obj.optString("job_title"),
+                                            obj.optString("job_category"),
+                                            obj.optString("job_type"),
+                                            obj.optString("vacancies"),
+                                            obj.optString("salary"),
+                                            obj.optString("workplace"),
+                                            obj.optString("education"),
+                                            obj.optString("experience"),
+                                            deadline,
+                                            obj.optString("description"),
+                                            obj.optString("owner_phone", obj.optString("user_phone", ""))
+                                    ));
+                                }
                             }
                         }
                         adapter.notifyDataSetChanged();
@@ -151,5 +159,26 @@ public class JobsActivity extends AppCompatActivity {
                 });
 
         VolleySingleton.getInstance(this).addToRequestQueue(request);
+    }
+
+    private boolean isExpired(String deadlineStr) {
+        if (deadlineStr == null || deadlineStr.isEmpty()) return false;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+            Date deadlineDate = sdf.parse(deadlineStr);
+            if (deadlineDate == null) return false;
+
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY, 0);
+            cal.set(Calendar.MINUTE, 0);
+            cal.set(Calendar.SECOND, 0);
+            cal.set(Calendar.MILLISECOND, 0);
+            Date today = cal.getTime();
+
+            // If today is after the deadline date, it's expired
+            return today.after(deadlineDate);
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

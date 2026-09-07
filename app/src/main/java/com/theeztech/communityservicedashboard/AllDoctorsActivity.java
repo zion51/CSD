@@ -30,6 +30,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -114,7 +115,9 @@ public class AllDoctorsActivity extends AppCompatActivity implements DoctorAdapt
                                         obj.optString("qualification"),
                                         obj.optString("phone"),
                                         obj.optString("visit_fee"),
-                                        obj.optString("chamber_time")
+                                        obj.optString("chamber_time"),
+                                        obj.optString("chamber_day", ""),
+                                        obj.optString("healthcare_name", "")
                                 ));
                             }
                             adapter.notifyDataSetChanged();
@@ -174,13 +177,98 @@ public class AllDoctorsActivity extends AppCompatActivity implements DoctorAdapt
                     String date = etDate.getText() != null ? etDate.getText().toString().trim() : "";
 
                     if (!name.isEmpty() && !phone.isEmpty() && !date.isEmpty()) {
-                        bookSerial(doctor, name, phone, date);
+                        if (validateBookingTime(doctor, date)) {
+                            bookSerial(doctor, name, phone, date);
+                        }
                     } else {
                         Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Cancel", null)
                 .show();
+    }
+
+    private boolean validateBookingTime(Doctor doctor, String selectedDateStr) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            Date selectedDate = sdf.parse(selectedDateStr);
+            if (selectedDate == null) return false;
+
+            Calendar selectedCal = Calendar.getInstance();
+            selectedCal.setTime(selectedDate);
+
+            // 1. Check if the doctor visits on this day
+            String dayName = new SimpleDateFormat("EEE", Locale.ENGLISH).format(selectedDate); // Sat, Sun...
+            if (!doctor.getChamberDay().contains(dayName)) {
+                Toast.makeText(this, "Doctor does not visit on this day (" + dayName + ")", Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            // 2. Find start time for this specific day
+            String startTimeStr = "";
+            String fullTime = doctor.getChamberTime();
+            if (fullTime.contains(dayName + ": ")) {
+                String dayPart = fullTime.split(dayName + ": ")[1];
+                startTimeStr = dayPart.split("-")[0].trim(); // e.g. "10AM"
+            } else if (!fullTime.contains(":")) {
+                // Fallback for old format if exists
+                startTimeStr = fullTime.split("-")[0].trim();
+            }
+
+            if (startTimeStr.isEmpty()) {
+                // If no specific time found, allow booking for now or add a default
+                return true;
+            }
+
+            // Parse time like 10AM or 4PM
+            int hour = 0;
+            int minute = 0;
+            try {
+                String timeOnly = startTimeStr.replaceAll("[a-zA-Z]", "");
+                String ampm = startTimeStr.replaceAll("[0-9:]", "").toUpperCase();
+                
+                if (timeOnly.contains(":")) {
+                    hour = Integer.parseInt(timeOnly.split(":")[0]);
+                    minute = Integer.parseInt(timeOnly.split(":")[1]);
+                } else {
+                    hour = Integer.parseInt(timeOnly);
+                }
+
+                if (ampm.equals("PM") && hour < 12) hour += 12;
+                if (ampm.equals("AM") && hour == 12) hour = 0;
+            } catch (Exception e) {
+                return true; // Parsing error, allow as fallback
+            }
+
+            // 3. Set the exact start time on the selected date
+            Calendar startCal = (Calendar) selectedCal.clone();
+            startCal.set(Calendar.HOUR_OF_DAY, hour);
+            startCal.set(Calendar.MINUTE, minute);
+            startCal.set(Calendar.SECOND, 0);
+
+            // 4. Set the opening time (24 hours before start time)
+            Calendar openCal = (Calendar) startCal.clone();
+            openCal.add(Calendar.HOUR_OF_DAY, -24);
+
+            long now = System.currentTimeMillis();
+            
+            if (now < openCal.getTimeInMillis()) {
+                SimpleDateFormat timeFormat = new SimpleDateFormat("MMM dd, hh:mm a", Locale.getDefault());
+                Toast.makeText(this, "Booking starts from " + timeFormat.format(openCal.getTime()), Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            if (now > startCal.getTimeInMillis()) {
+                Toast.makeText(this, "Visiting time has already started/passed for this day.", Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true; // On error, allow booking to avoid locking users out
+        }
     }
 
     private void bookSerial(Doctor doctor, String patientName, String patientPhone, String date) {
